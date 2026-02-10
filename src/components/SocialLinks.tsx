@@ -39,28 +39,28 @@ const socials = [
     username: "yeschirag",
     href: "https://linkedin.com/in/yeschirag",
     icon: LinkedInIcon,
-    color: "bg-[#0077b5]",
+    color: "bg-[#0A66C2]",
   },
   {
     name: "GitHub",
     username: "yeschirag",
     href: "https://github.com/yeschirag",
     icon: GitHubIcon,
-    color: "bg-zinc-700 dark:bg-zinc-600",
+    color: "bg-[#181717] dark:bg-[#333333]",
   },
   {
     name: "LeetCode",
     username: "yeschirag",
     href: "https://leetcode.com/yeschirag",
     icon: LeetCodeIcon,
-    color: "bg-[#ffa116]",
+    color: "bg-[#FFA116]",
   },
   {
     name: "Email",
     username: "chirag.k24@iiits.in",
     href: "mailto:chirag.k24@iiits.in",
     icon: EmailIcon,
-    color: "bg-[#ea4335]",
+    color: "bg-[#EA4335]",
   },
 ];
 
@@ -82,23 +82,23 @@ export default function SocialLinks() {
               href={social.href}
               target={social.href.startsWith("mailto") ? undefined : "_blank"}
               rel={social.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-              className={`group flex cursor-pointer items-center gap-4 p-4 pr-2 transition-[background-color] ease-out hover:bg-accent-muted ${
+              className={`group flex cursor-pointer items-center gap-4 p-4 pr-2 transition-all duration-200 ease-out hover:bg-accent/50 ${
                 index % 2 === 0 ? "max-sm:screen-line-before max-sm:screen-line-after" : ""
               } ${index % 2 === 0 ? "sm:screen-line-before sm:screen-line-after" : ""}`}
             >
-              <div className={`relative size-12 shrink-0 rounded-xl ${social.color} flex items-center justify-center transition-transform duration-200 group-hover:scale-105`}>
-                <social.icon className="size-6 text-white" />
-                <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/10 ring-inset dark:ring-white/15" />
+              <div className={`relative size-14 shrink-0 rounded-2xl ${social.color} flex items-center justify-center shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg`}>
+                <social.icon className="size-7 text-white" />
+                <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-black/5 ring-inset dark:ring-white/10" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="flex items-center font-medium underline-offset-4 group-hover:underline">
+                <h3 className="font-semibold text-foreground transition-colors duration-200">
                   {social.name}
                 </h3>
                 <p className="text-sm text-muted-foreground truncate">
                   {social.username}
                 </p>
               </div>
-              <ArrowUpRight className="size-4 text-muted-foreground transition-[rotate] duration-300 group-hover:rotate-45 flex-shrink-0" />
+              <ArrowUpRight className="size-5 text-muted-foreground transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 flex-shrink-0" />
             </a>
           ))}
         </div>

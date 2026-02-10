@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect } from "react";
 import { 
   Code2, 
   GraduationCap, 
@@ -11,51 +11,42 @@ import {
   BadgeCheck
 } from "lucide-react";
 
+const TITLES = [
+  "Software Developer",
+  "Tech Enthusiast",
+  "Problem Solver"
+];
+
 export default function Hero() {
-  const logoRef = useRef<HTMLDivElement>(null);
-  const [logoVisible, setLogoVisible] = useState(false);
+  const [titleIndex, setTitleIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
-    const el = logoRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setLogoVisible(entry.isIntersecting),
-      { threshold: 0.5 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
+    const interval = setInterval(() => {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setTitleIndex((prev) => (prev + 1) % TITLES.length);
+        setIsAnimating(false);
+      }, 300);
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
+
   return (
     <div>
-      {/* Cover Pattern — Chánh Đại style */}
-      <div className="aspect-[2/1] sm:aspect-[3/1] border-x border-edge select-none flex items-center justify-center screen-line-before screen-line-after hero-cover bg-[radial-gradient(var(--pattern-fg)_1px,transparent_0)] bg-[length:10px_10px] bg-center [--pattern-fg:theme(colors.zinc.950/5%)] dark:[--pattern-fg:theme(colors.white/5%)]">
-        <div
-          ref={logoRef}
-          className={`relative inline-block transition-[opacity,transform] duration-300 ease-out ${
-            logoVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-          }`}
-        >
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            fill="none" 
-            viewBox="0 0 200 100" 
-            className="h-14 w-28 sm:h-16 sm:w-32 text-foreground"
-          >
-            <path 
-              fill="currentColor" 
-              d="M0,0 H80 V20 H20 V80 H80 V100 H0 Z M120,0 H200 V20 H140 V40 H200 V100 H120 V80 H180 V60 H120 Z"
-            />
-          </svg>
-        </div>
-      </div>
 
       {/* Profile Header */}
       <div className="screen-line-after flex border-x border-edge">
         {/* Avatar */}
         <div className="shrink-0 border-r border-edge">
           <div className="mx-0.5 my-0.75">
-            <div className="size-30 sm:size-40 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 ring-1 ring-border ring-offset-2 ring-offset-background flex items-center justify-center text-4xl sm:text-5xl font-bold text-white select-none transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)]">
-              CS
+            <div className="size-70 sm:size-40 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background overflow-hidden transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)]">
+              <img 
+                src="/chirag.png" 
+                alt="Chirag" 
+                className="w-full h-full"
+                style={{ objectFit: 'cover', objectPosition: 'center 45%', transform: 'scale(1.2)' }}
+              />
             </div>
           </div>
         </div>
@@ -75,8 +66,13 @@ export default function Hero() {
               <BadgeCheck className="size-4.5 text-info flex-shrink-0 select-none transition-transform duration-200 group-hover/name:scale-110" aria-label="Verified" />
             </div>
             <div className="h-12.5 sm:h-9 border-t border-edge py-1 pl-4">
-              <p className="font-mono text-sm text-muted-foreground text-balance" style={{ transform: "translateY(-1px)" }}>
-                Software Developer
+              <p 
+                className={`font-mono text-sm text-muted-foreground text-balance transition-all duration-300 ${
+                  isAnimating ? 'opacity-0 -translate-y-1' : 'opacity-100 translate-y-0'
+                }`}
+                style={{ transform: "translateY(-1px)" }}
+              >
+                {TITLES[titleIndex]}
               </p>
             </div>
           </div>
@@ -95,7 +91,7 @@ export default function Hero() {
             <div className="flex size-6 shrink-0 items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted text-muted-foreground ring-1 ring-edge ring-offset-1 ring-offset-background">
               <Code2 className="size-4" />
             </div>
-            <p>Software Developer</p>
+            <p>Junior Teaching Assistant @ IIIT Sri City (DSA Spring 2026)</p>
           </div>
 
           {/* Row 2 — Education */}

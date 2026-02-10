@@ -119,7 +119,7 @@ export function GitHubContributionsClient({
                   ry={0}
                   x={cell.x}
                   y={cell.y}
-                  className={`${levelClasses[cell.level] ?? levelClasses[0]} cursor-crosshair`}
+                  className={levelClasses[cell.level] ?? levelClasses[0]}
                   onMouseEnter={(e) => handleMouseEnter(cell, e)}
                   onMouseLeave={handleMouseLeave}
                 />

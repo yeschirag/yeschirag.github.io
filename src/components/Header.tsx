@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Github } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 
@@ -15,6 +15,15 @@ const NAV_ITEMS = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 100);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 max-w-screen overflow-x-hidden bg-background px-2 pt-2">
@@ -22,7 +31,9 @@ export default function Header() {
         {/* Logo */}
         <Link 
           href="/" 
-          className="transition-[scale] ease-out active:scale-[0.98]"
+          className={`transition-all duration-300 ease-out active:scale-[0.98] ${
+            scrolled ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4 pointer-events-none'
+          }`}
           aria-label="Home"
         >
           <svg 
