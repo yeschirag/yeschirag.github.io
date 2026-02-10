@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: "GeistSans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "GeistMono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-accent: var(--accent);
+  --color-accent-muted: var(--accent-muted);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-edge: var(--edge);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-info: var(--info);
+  --color-success: var(--success);
+  --color-destructive: var(--destructive);
+  --color-link: var(--link);
+  --color-selection: var(--selection);
+  --color-selection-foreground: var(--selection-foreground);
+
+  --animate-fade-in: fade-in var(--tw-duration, 200ms) ease-out;
+  --animate-fade-out: fade-out var(--tw-duration, 200ms) ease-out;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+}
+
+@font-face {
+  font-family: 'GeistSans';
+  src: url('https://assets.vercel.com/raw/upload/v1730135254/geist/Geist-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GeistSans';
+  src: url('https://assets.vercel.com/raw/upload/v1730135254/geist/Geist-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GeistSans';
+  src: url('https://assets.vercel.com/raw/upload/v1730135254/geist/Geist-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GeistSans';
+  src: url('https://assets.vercel.com/raw/upload/v1730135254/geist/Geist-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GeistMono';
+  src: url('https://assets.vercel.com/raw/upload/v1730135254/geist/GeistMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GeistMono';
+  src: url('https://assets.vercel.com/raw/upload/v1730135254/geist/GeistMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Light mode (default) ── */
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+  --primary: oklch(0.141 0.005 285.823);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.141 0.005 285.823);
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.552 0.016 285.938);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.141 0.005 285.823);
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-muted: color-mix(in oklab, var(--accent) 50%, transparent);
+  --accent-foreground: oklch(0.21 0.006 285.885);
+  --border: oklch(0.92 0.004 286.32);
+  --edge: color-mix(in oklab, var(--border) 64%, var(--background));
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.705 0.015 286.067);
+  --info: oklch(0.67 0.17 244.98);
+  --success: oklch(0.723 0.219 149.579);
+  --destructive: oklch(0.577 0.245 27.325);
+  --link: oklch(0.488 0.243 264.376);
+  --selection: oklch(0.141 0.005 285.823);
+  --selection-foreground: oklch(0.985 0 0);
+}
+
+/* ── Dark mode ── */
+.dark {
+  --background: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.141 0.005 285.823);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --card: oklch(0.21 0.006 285.885);
+  --card-foreground: oklch(0.985 0 0);
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-muted: color-mix(in oklab, var(--accent) 20%, transparent);
+  --accent-foreground: oklch(0.985 0 0);
+  --border: oklch(0.274 0.006 286.033);
+  --input: oklch(0.274 0.006 286.033);
+  --ring: oklch(0.552 0.016 285.938);
+  --info: oklch(0.67 0.17 244.98);
+  --success: oklch(0.723 0.219 149.579);
+  --destructive: oklch(0.505 0.213 27.518);
+  --link: oklch(0.623 0.214 259.815);
+  --selection: oklch(0.985 0 0);
+  --selection-foreground: oklch(0.141 0.005 285.823);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+::after,
+::before,
+::backdrop,
+::file-selector-button {
+  border-color: var(--color-border);
+  outline-color: var(--color-ring);
+}
+
+/* Screen line decorators — full-width horizontal rules */
+@utility screen-line-before {
+  @apply relative before:absolute before:top-0 before:-left-[100vw] before:-z-1 before:h-px before:w-[200vw] before:bg-edge;
+}
+
+@utility screen-line-after {
+  @apply relative after:absolute after:bottom-0 after:-left-[100vw] after:-z-1 after:h-px after:w-[200vw] after:bg-edge;
+}
+
+/* Diagonal stripe separator — exact Chánh Đại pattern */
+.stripe-pattern {
+  position: relative;
+  overflow: visible;
+}
+
+.stripe-pattern::before {
+  content: "";
+  position: absolute;
+  left: -100vw;
+  width: 200vw;
+  top: 0;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    315deg,
+    color-mix(in oklab, var(--color-edge) 56%, transparent) 0px,
+    color-mix(in oklab, var(--color-edge) 56%, transparent) 1px,
+    transparent 1px,
+    transparent 50%
+  );
+  background-size: 10px 10px;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-selection);
+  color: var(--color-selection-foreground);
+}
+
+/* Scrollbar — thin like Chánh Đại */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 5px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+/* Hero cover — nearly transparent bg with subtle dot pattern */
+.hero-cover {
+  background-color: rgba(0, 0, 0, 0.0075);
+}
+.dark .hero-cover {
+  background-color: rgba(255, 255, 255, 0.0075);
+}
+
+/* Utility: font-medium underline */
+.link {
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+[id] {
+  scroll-margin-top: 4.5rem;
+}
+
