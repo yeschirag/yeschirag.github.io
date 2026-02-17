@@ -5,7 +5,7 @@ const projects = [
     title: "Ghost-Collab",
     description: "A student-first collaboration platform enabling users to discover projects and collaborators based on skills, roles, and availability.",
     tech: ["Next.js", "Tailwind CSS", "Express", "Firebase", "Firestore"],
-    liveUrl: "https://ghost-collab.vercel.app",
+    liveUrl: "https://ghost-collab.tech",
     period: { start: "2025", end: null },
     features: [
       "Project-based matching system with transparent match percentage logic using skill overlap, time commitment, and interest vectors",
@@ -17,7 +17,7 @@ const projects = [
     title: "Spendi",
     description: "A responsive frontend web application for group expense management, enabling balance tracking, settlements, and transaction history.",
     tech: ["HTML", "CSS", "JavaScript"],
-    liveUrl: "https://spendi.vercel.app",
+    liveUrl: "https://spendi.yeschirag.me",
     period: { start: "2025", end: "2025" },
     features: [
       "Real-time expense calculations with partial settlements and filtering",

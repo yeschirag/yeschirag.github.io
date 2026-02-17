@@ -56,16 +56,38 @@ export function GitHubContributionsClient({
       if (!svgEl) return;
 
       const rect = svgEl.getBoundingClientRect();
-      const cellCenterX = e.currentTarget.getBoundingClientRect().left +
-        cellSize / 2 - rect.left;
-      const cellTop = e.currentTarget.getBoundingClientRect().top - rect.top;
+      const cellRect = e.currentTarget.getBoundingClientRect();
+      const cellCenterX = cellRect.left + cellSize / 2 - rect.left;
+      const cellTop = cellRect.top - rect.top;
+      const cellBottom = cellRect.bottom - rect.top;
 
       const text =
         cell.count > 0
           ? `${cell.count} contributions on ${formatDate(cell.date)}`
           : `No contributions on ${formatDate(cell.date)}`;
 
-      setTooltip({ text, x: cellCenterX, y: cellTop });
+      // Estimate tooltip height (approx 36px), width (estimate 180px), and margin (6px)
+      const tooltipHeight = 36;
+      const tooltipWidth = 180;
+      const margin = 6;
+      let position = 'top';
+      let y = cellTop;
+      let x = cellCenterX;
+      // Clamp so tooltip never goes above the container
+      if (cellTop - tooltipHeight - margin < 0) {
+        position = 'bottom';
+        y = cellBottom;
+      }
+      // If still above, clamp to margin
+      if (position === 'top' && (cellTop - tooltipHeight - margin < 0)) {
+        y = tooltipHeight + margin;
+      }
+      // Clamp horizontally so tooltip doesn't overflow left/right of SVG
+      const minX = tooltipWidth / 2 + 4; // 4px padding
+      const maxX = width - tooltipWidth / 2 - 4;
+      if (x < minX) x = minX;
+      if (x > maxX) x = maxX;
+      setTooltip({ text, x, y, position });
     },
     [cellSize]
   );
@@ -129,15 +151,19 @@ export function GitHubContributionsClient({
             {/* Custom instant tooltip */}
             {tooltip && (
               <div
-                className="pointer-events-none absolute z-50 -translate-x-1/2 -translate-y-full rounded-md bg-foreground px-2.5 py-1.5 text-xs font-medium text-background shadow-lg whitespace-nowrap"
+                className={`pointer-events-none absolute z-[9999] -translate-x-1/2 rounded-md bg-foreground px-2.5 py-1.5 text-xs font-medium text-background shadow-lg whitespace-nowrap ${tooltip.position === 'top' ? '-translate-y-full' : 'translate-y-2'}`}
                 style={{
                   left: tooltip.x,
-                  top: tooltip.y - 6,
+                  top: tooltip.position === 'top' ? tooltip.y - 6 : tooltip.y + 6,
                 }}
               >
                 {tooltip.text}
                 {/* Arrow */}
-                <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-foreground" />
+                {tooltip.position === 'top' ? (
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-foreground" />
+                ) : (
+                  <div className="absolute left-1/2 -translate-x-1/2 bottom-full w-0 h-0 border-l-4 border-r-4 border-b-4 border-l-transparent border-r-transparent border-b-foreground" />
+                )}
               </div>
             )}
           </div>
