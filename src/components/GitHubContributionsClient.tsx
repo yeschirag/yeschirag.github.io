@@ -87,7 +87,7 @@ export function GitHubContributionsClient({
       const maxX = width - tooltipWidth / 2 - 4;
       if (x < minX) x = minX;
       if (x > maxX) x = maxX;
-      setTooltip({ text, x, y, position });
+        setTooltip({ text, x, y });
     },
     [cellSize]
   );
@@ -151,19 +151,15 @@ export function GitHubContributionsClient({
             {/* Custom instant tooltip */}
             {tooltip && (
               <div
-                className={`pointer-events-none absolute z-[9999] -translate-x-1/2 rounded-md bg-foreground px-2.5 py-1.5 text-xs font-medium text-background shadow-lg whitespace-nowrap ${tooltip.position === 'top' ? '-translate-y-full' : 'translate-y-2'}`}
+                className={`pointer-events-none absolute z-[9999] -translate-x-1/2 rounded-md bg-foreground px-2.5 py-1.5 text-xs font-medium text-background shadow-lg whitespace-nowrap -translate-y-full`}
                 style={{
                   left: tooltip.x,
-                  top: tooltip.position === 'top' ? tooltip.y - 6 : tooltip.y + 6,
+                  top: tooltip.y - 6,
                 }}
               >
                 {tooltip.text}
                 {/* Arrow */}
-                {tooltip.position === 'top' ? (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-foreground" />
-                ) : (
-                  <div className="absolute left-1/2 -translate-x-1/2 bottom-full w-0 h-0 border-l-4 border-r-4 border-b-4 border-l-transparent border-r-transparent border-b-foreground" />
-                )}
+                <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-foreground" />
               </div>
             )}
           </div>
