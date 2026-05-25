@@ -14,6 +14,17 @@ const projects = [
     ],
   },
   {
+    title: "BillBhai",
+    description: "A full-stack billing and operations platform with role-based access control for multi-business portfolios.",
+    tech: ["React.js", "NestJS", "MongoDB", "Tailwind CSS"],
+    liveUrl: null,
+    period: { start: "2026", end: null },
+    features: [
+      "Role-based access control across Admin, Cashier, Inventory Manager, Delivery Ops, and Return Handler roles",
+      "Modular architecture covering Orders, Inventory, Returns, Delivery, Users, and Reports with a Super User portal for nested CRUD drill-downs",
+    ],
+  },
+  {
     title: "Spendi",
     description: "A responsive frontend web application for group expense management, enabling balance tracking, settlements, and transaction history.",
     tech: ["HTML", "CSS", "JavaScript"],

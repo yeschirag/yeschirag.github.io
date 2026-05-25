@@ -2,6 +2,13 @@ import { AwardIcon, ExternalLink } from "lucide-react";
 
 const achievements = [
   {
+    title: "LeetCode",
+    description: "Contest Rating: 1650+ | 200+ problems solved across DSA topics",
+    link: "https://leetcode.com/yeschirag",
+    linkText: "View Profile",
+    date: "2026",
+  },
+  {
     title: "Generative AI Certification",
     description: "Completed Google Study Jam",
     link: "https://www.cloudskillsboost.google/public_profiles/your-profile",

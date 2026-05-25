@@ -1,22 +1,35 @@
 "use client";
 
 import { useState } from "react";
-import { Briefcase, Calendar, Code2, Users, PenTool, ChevronDown } from "lucide-react";
+import { Briefcase, Code2, Users, PenTool, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const experiences = [
+  {
+    title: "Web Developer Intern",
+    subtitle: "Mumbai, On-site",
+    company: "Dibiz Solution",
+    companyUrl: null,
+    period: { start: "05.2026", end: "06.2026" },
+    isCurrentEmployer: false,
+    icon: Briefcase,
+    description: [
+      "Worked with three brands to revamp Shopify storefronts, applying CRO and CRM strategies to improve conversions and engagement.",
+      "Built and customized web interfaces using Shopify, Framer, and HTML/CSS, and automated business workflows using n8n to reduce manual operations.",
+    ],
+    skills: ["Shopify", "Framer", "HTML/CSS", "n8n", "CRO", "CRM"],
+  },
   {
     title: "Junior Teaching Assistant",
     subtitle: "Data Structures & Algorithms (C Lab)",
     company: "Indian Institute of Information Technology Sri City",
     companyUrl: "https://iiits.ac.in",
-    period: { start: "01.2026", end: null },
-    isCurrentEmployer: true,
+    period: { start: "01.2026", end: "05.2026" },
+    isCurrentEmployer: false,
     icon: Code2,
     description: [
-      "Assisted junior students during DSA lab sessions using C language, focusing on implementation of core data structures and algorithmic logic.",
-      "Guided students to build strong DSA foundations, improving their problem-solving approach and coding.",
-      "Debugged C programs and resolved logical, memory, and runtime errors, mentoring students on clean coding and complexity awareness.",
+      "Assisted junior students in DSA lab sessions using C, guiding implementation of core data structures and improving problem-solving approach.",
+      "Debugged C programs to resolve logical, memory, and runtime errors while mentoring students on clean code and complexity awareness.",
     ],
     skills: ["C", "Data Structures", "Algorithms", "Mentoring"],
   },

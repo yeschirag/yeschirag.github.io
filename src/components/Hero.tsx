@@ -91,7 +91,7 @@ export default function Hero() {
             <div className="flex size-6 shrink-0 items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted text-muted-foreground ring-1 ring-edge ring-offset-1 ring-offset-background mt-0.5 sm:mt-0">
               <Code2 className="size-4" />
             </div>
-            <p className="leading-relaxed sm:leading-normal">Junior Teaching Assistant @ IIIT Sri City (DSA Spring 2026)</p>
+            <p className="leading-relaxed sm:leading-normal">Web Developer Intern @ Dibiz Solution (May-Jun 2026)</p>
           </div>
 
           {/* Row 2 — Education */}

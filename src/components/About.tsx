@@ -22,7 +22,7 @@ export default function About() {
             <li className="flex gap-3">
               <span className="text-muted-foreground flex-shrink-0">•</span>
               <span>
-                Currently serving as <strong className="font-medium">Junior Teaching Assistant</strong> for Data Structures & Algorithms, helping students build strong programming foundations.
+                Completed a <strong className="font-medium">Web Developer Internship</strong> at Dibiz Solution (May-Jun 2026) and previously served as <strong className="font-medium">Junior Teaching Assistant</strong> for Data Structures & Algorithms.
               </span>
             </li>
             <li className="flex gap-3">
