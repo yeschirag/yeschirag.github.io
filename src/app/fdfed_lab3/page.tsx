@@ -31,7 +31,7 @@ const INITIAL_COURSES: Course[] = [
   },
 ];
 
-export default function FdfefLabPage() {
+export default function FdfedLab3Page() {
   const [courses, setCourses] = useState<Course[]>(INITIAL_COURSES);
   const [interestedCourseIds, setInterestedCourseIds] = useState<string[]>([]);
   const [selectedCourseId, setSelectedCourseId] = useState<string | null>(null);

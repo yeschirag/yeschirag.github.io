@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
-import "./fdfef_lab.css";
+import "./fdfed_lab3.css";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -15,19 +15,19 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: "Course Registration",
-  description: "Course Registration Application - FDFEF Lab",
+  description: "Course Registration Application - FDFED Lab 3",
   icons: {
     icon: "/favicon.svg",
   },
 };
 
-export default function FdfefLabLayout({
+export default function FdfedLab3Layout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className={`${inter.variable} ${manrope.variable} fdfef-lab-root`}>
+    <div className={`${inter.variable} ${manrope.variable} fdfed-lab3-root`}>
       {children}
     </div>
   );
